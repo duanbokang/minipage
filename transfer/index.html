@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--time: 2018年11月23日 17:33:16-->
+    <!--author: dbag-->
+    <!--blog: http://www.cnblogs.com/phper8/-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transfer 穿梭框组件-基于layui</title>
+    <link rel="stylesheet" href="layui/layui/css/layui.css">
+</head>
+
+<body>
+    <div class="layui-container" style="margin-top: 15px;">
+        <div class="layui-btn-group">
+            <button class="layui-btn all">获取全部数据</button>
+            <button class="layui-btn left">获取左边数据</button>
+            <button class="layui-btn right">获取右边数据</button>
+        </div>
+        <span>问题反馈QQ群: 925487043</span>
+        <div id="root"></div>
+        <div id="root1"></div>
+        <div id="root2"></div>
+        <div id="root3"></div>
+    </div>
+</body>
+<script type="text/javascript" src="layui/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: 'layui_exts/'
+    }).extend({
+        transfer: "tabletransfer",
+    }).use('transfer', function() {
+        var $ = layui.$;
+        var transfer = layui.transfer;
+        console.log(transfer);
+        //数据源
+        var data1 = [{
+            'id': '10001',
+            'name': '杜甫',
+            'sex': '男'
+        }, {
+            'id': '10002',
+            'name': '李白',
+            'sex': '男'
+        }, {
+            'id': '10003',
+            'name': '王勃',
+            'sex': '男'
+        }, {
+            'id': '10004',
+            'name': '李清照',
+            'sex': '男'
+        }, {
+            'id': '10005',
+            'name': '白居易',
+            'sex': '男'
+        }];
+
+        var data2 = [{
+            'id': '10001',
+            'name': '杜甫',
+            'sex': '男'
+        }, {
+            'id': '10002',
+            'name': '李白',
+            'sex': '男'
+        }, {
+            'id': '10003',
+            'name': '王勃',
+            'sex': '男'
+        }, {
+            'id': '10004',
+            'name': '李清照',
+            'sex': '男'
+        }];
+
+        var data3 = [{
+            'id': '10001',
+            'name': '杜甫',
+            'sex': '男'
+        }, {
+            'id': '10002',
+            'name': '李白',
+            'sex': '男'
+        }, {
+            'id': '10003',
+            'name': '王勃',
+            'sex': '男'
+        }, {
+            'id': '10004',
+            'name': '李清照',
+            'sex': '男'
+        }];
+
+        //表格列
+        var cols = [
+            [{
+                type: 'checkbox',
+                fixed: 'left'
+            }, {
+                field: 'id',
+                title: 'ID',
+                width: 80,
+                sort: true
+            }, ]
+        ]
+
+        var tb1 = transfer.render({
+            ele: "#root1",
+            index: 1,
+            data: [data1],
+            cols: cols,
+            page: false,
+            height: 400
+        });
+        var tb2 = transfer.render({
+            ele: "#root2",
+            index: 2,
+            data: [data2],
+            cols: cols,
+            page: false,
+        });
+        var tb3 = transfer.render({
+            ele: "#root3",
+            index: 3,
+            data: [data3],
+            cols: cols,
+            page: true,
+            height: 500
+        });
+
+        //transfer.get(参数1:初始化返回值,参数2:获取数据[all,left,right,l,r],参数:指定数据字段)
+        //获取数据
+        $('.all').on('click', function() {
+            var tbRight1 = tb1.getRightData(1);
+            var tbRight2 = tb2.getRightData(2);
+            var tbRight3 = tb3.getRightData(3);
+            console.log(tbRight1, tbRight2, tbRight3);
+        });
+
+    })
+</script>
+
+
+</html>
