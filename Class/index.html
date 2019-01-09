@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/js/layui/layui/css/layui.css">
+    <script src="/js/layui/layui/layui.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="layui-btn-group">
+        <button class="layui-btn right">获取右边数据</button>
+    </div>
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <div id="root3"></div>
+</body>
+<script>
+    layui.config({
+        base: "/js/"
+    }).extend({
+        transfer: 'transfer/transfer'
+    }).use(['transfer'], function() {
+        let transfer = layui.transfer;
+        let $ = layui.$;
+        let data1 = [{
+            'id': '10001',
+            'name': '杜甫',
+            'sex': '男'
+        }, {
+            'id': '10002',
+            'name': '李白',
+            'sex': '男'
+        }, {
+            'id': '10003',
+            'name': '王勃',
+            'sex': '男'
+        }, {
+            'id': '10004',
+            'name': '李清照',
+            'sex': '男'
+        }, {
+            'id': '10005',
+            'name': '白居易',
+            'sex': '男'
+        }];
+        let data2 = [{
+            'id': '10001',
+            'name': '杜甫',
+            'sex': '男'
+        }, {
+            'id': '10002',
+            'name': '李白',
+            'sex': '男'
+        }, {
+            'id': '10003',
+            'name': '王勃',
+            'sex': '男'
+        }, {
+            'id': '10004',
+            'name': '李清照',
+            'sex': '男'
+        }, {
+            'id': '10005',
+            'name': '白居易',
+            'sex': '男'
+        }];
+        let data3 = [{
+            'id': '10001',
+            'name': '杜甫',
+            'sex': '男'
+        }, {
+            'id': '10002',
+            'name': '李白',
+            'sex': '男'
+        }, {
+            'id': '10003',
+            'name': '王勃',
+            'sex': '男'
+        }, {
+            'id': '10004',
+            'name': '李清照',
+            'sex': '男'
+        }, {
+            'id': '10005',
+            'name': '白居易',
+            'sex': '男'
+        }];
+
+        //表格列
+        var cols = [
+            [{
+                type: 'checkbox',
+                fixed: 'left'
+            }, {
+                field: 'id',
+                title: 'ID',
+                width: 80,
+
+            }, {
+                field: 'name',
+                title: '姓名'
+            }, {
+                field: 'sex',
+                title: '性别'
+            }]
+        ]
+
+        let a = new transfer({
+            ele: '#root1',
+            data: [data1],
+            cols: cols,
+            page: true,
+            height: 300
+        });
+        let aa = a.render();
+        console.log(aa);
+        let b = new transfer({
+            ele: '#root2',
+            data: [data2],
+            cols: cols,
+            page: true,
+            height: 300
+        });
+        let bb = b.render();
+        console.log(bb);
+        let c = new transfer({
+            ele: '#root3',
+            data: [data3],
+            cols: cols,
+            page: true,
+            height: 300
+        });
+        let cc = c.render();
+        console.log(cc);
+        //get()获取选中的数据
+        $('.right').on('click', function() {
+            let aaa = aa.get();
+            let bbb = bb.get();
+            let ccc = cc.get();
+            console.log(aaa, bbb, ccc);
+        });
+    })
+</script>
+
+</html>
