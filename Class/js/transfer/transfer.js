@@ -44,8 +44,7 @@ layui.define(['table'], function(exports) {
                 let btnRight = $(`button[data-right=${RIGHT_BTN + this.index}]`); //右按钮
 
                 btnLeft.on("click", function() {
-                    let checkStatus = that.checkStatus(`${LEFT_TABLE + that.index}`);
-                    let checkList = checkStatus.data;
+                    let checkList = that.checkStatus(`${LEFT_TABLE + that.index}`);
                     for (let i = 0; i < checkList.length; i++) {
                         that.dataRight.unshift(checkList[i]);
                     }
@@ -68,8 +67,7 @@ layui.define(['table'], function(exports) {
                     return false;
                 })
                 btnRight.on("click", function() {
-                    let checkStatus = that.checkStatus(`${RIGHT_TABLE + that.index}`);
-                    let checkList = checkStatus.data;
+                    let checkList = that.checkStatus(`${RIGHT_TABLE + that.index}`);
                     for (let i = 0; i < checkList.length; i++) {
                         that.dataLeft.unshift(checkList[i]);
                     }
@@ -119,7 +117,7 @@ layui.define(['table'], function(exports) {
              * return {*}被选中的行和是否全选
              */
         checkStatus(id) {
-                return table.checkStatus(id)
+                return table.checkStatus(id).data;
             }
             /**
              * 左边数据渲染
@@ -163,8 +161,8 @@ layui.define(['table'], function(exports) {
         toggleBtn(filter, btn) {
                 let that = this;
                 table.on(`checkbox(${filter})`, function(obj) {
-                    let checkStatus = that.checkStatus(`${filter}`);
-                    if (checkStatus.data.length > 0) {
+                    let checkList = that.checkStatus(`${filter}`);
+                    if (checkList.length > 0) {
                         btn.removeClass(`${DISABLED}`)
                     } else {
                         btn.addClass(`${DISABLED}`)

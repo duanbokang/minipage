@@ -47,48 +47,6 @@
             'name': '白居易',
             'sex': '男'
         }];
-        let data2 = [{
-            'id': '10001',
-            'name': '杜甫',
-            'sex': '男'
-        }, {
-            'id': '10002',
-            'name': '李白',
-            'sex': '男'
-        }, {
-            'id': '10003',
-            'name': '王勃',
-            'sex': '男'
-        }, {
-            'id': '10004',
-            'name': '李清照',
-            'sex': '男'
-        }, {
-            'id': '10005',
-            'name': '白居易',
-            'sex': '男'
-        }];
-        let data3 = [{
-            'id': '10001',
-            'name': '杜甫',
-            'sex': '男'
-        }, {
-            'id': '10002',
-            'name': '李白',
-            'sex': '男'
-        }, {
-            'id': '10003',
-            'name': '王勃',
-            'sex': '男'
-        }, {
-            'id': '10004',
-            'name': '李清照',
-            'sex': '男'
-        }, {
-            'id': '10005',
-            'name': '白居易',
-            'sex': '男'
-        }];
 
         //表格列
         var cols = [
@@ -118,29 +76,11 @@
         });
         let aa = a.render();
         console.log(aa);
-        let b = new transfer({
-            ele: '#root2',
-            data: [data2],
-            cols: cols,
-            page: true,
-            height: 300
-        });
-        let bb = b.render();
-        console.log(bb);
-        let c = new transfer({
-            ele: '#root3',
-            data: [data3],
-            cols: cols,
-            page: true,
-            height: 300
-        });
-        let cc = c.render();
-        console.log(cc);
+
         //get()获取选中的数据
         $('.right').on('click', function() {
             let aaa = aa.get();
-            let bbb = bb.get();
-            let ccc = cc.get();
+
             console.log(aaa, bbb, ccc);
         });
     })
