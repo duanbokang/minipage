@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>indexDB</title>
+    <link rel="stylesheet" href="/indexDB/layui/layui/css/layui.css">
+</head>
+
+<body>
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-inline">
+            <input type="text" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">年龄</label>
+        <div class="layui-inline">
+            <input type="text" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <span class="layui-btn add">添加</span>
+        <span class="layui-btn load">读取</span>
+    </div>
+</body>
+<script src="/indexDB/layui/layui/layui.js"></script>
+<script>
+    layui.use([], function() {
+        console.log(11);
+        let $ = layui.$;
+        let request = window.indexedDB.open("list", 1);
+        let db;
+        request.onerror = function(err) {
+            console.log("数据库打开失败" + err);
+        }
+        request.onsuccess = function(opt) {
+            db = request.result; //这是新的数据库对象
+            console.log("打开成功", opt);
+        }
+
+
+
+        console.log(db);
+    })
+</script>
+
+</html>
