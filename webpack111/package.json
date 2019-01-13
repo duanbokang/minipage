@@ -1,0 +1,28 @@
+{
+    "name": "web-pack",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts_说明1": "这个标签用来配置一些便捷命令,build是打包真实文件的时候用,dev是运行本地服务(npm run dev)",
+    "scripts_说明2": "如果没有配置 可以用npx webpack 这样类似的命令来运行",
+    "scripts": {
+        "build": "webpack",
+        "dev": "webpack-dev-server"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "clean-webpack-plugin": "^1.0.0",
+        "css-loader": "^0.28.11",
+        "html-webpack-plugin": "^3.2.0",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "postcss": "^7.0.11",
+        "postcss-loader": "^3.0.0",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.28.4",
+        "webpack-cli": "^3.2.1",
+        "webpack-dev-server": "^3.1.14"
+    }
+}
